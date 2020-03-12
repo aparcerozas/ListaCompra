@@ -1,24 +1,27 @@
-<h2>Lista de la compra</h2>
+<h2>Lista de productos disponibles</h2>
 <div class="lista">
-  <div class="product" *ngFor="let product of products">
-
-    <h3>
-      <a [title]="product.name">
-        {{ product.name }}
-      </a>
+  <div class="arriba" *ngFor="let product of products">
+    <h3 *ngIf="!product.comprado">
+      <h3>{{ product.name }}</h3>
+      <p>Descripción: {{ product.description }}</p>
+      <p>Precio: {{ product.price }}</p>
+      <button (click)="bajar(product)" [title]="product.name">
+        Comprar
+      </button>
     </h3>
+  </div>
+</div>
 
-    <p *ngIf="product.description">
-      Descripción: {{ product.description }}
-    </p>
-
-    <p *ngIf="product.price">
-      Precio: {{ product.price }}
-    </p>
-
-    <button (click)="share()">
-      Comprar
-    </button>
-
+<h2>Lista de productos seleccionados</h2>
+<div class="compra">
+  <div class="abajo" *ngFor="let product of products">
+    <h3 *ngIf="product.comprado">
+      <h3>{{ product.name }}</h3>
+      <p>Descripción: {{ product.description }}</p>
+      <p>Precio: {{ product.price }}</p>
+      <button (click)="bajar(product)" [title]="product.name">
+        Devolver
+      </button>
+    </h3>
   </div>
 </div>

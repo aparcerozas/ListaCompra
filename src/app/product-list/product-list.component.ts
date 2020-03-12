@@ -10,7 +10,7 @@ import { products } from '../products';
 export class ProductListComponent {
   products = products;
 
-  share() {
-    window.alert('Producto comprado');
+  bajar(product) {
+    product.comprado = !product.comprado;
   }
 }
